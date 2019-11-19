@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<h1>Edit customer</h1>
+<p>
+    <a href="/employee">Employee list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-employee}" th:object="${employee}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>birthday:</td>
+            <td><input type="text" th:field="*{birthDate}"/></td>
+        </tr>
+        <tr>
+            <td>address:</td>
+            <td><input type="text" th:field="*{address}"/></td>
+        </tr>
+        <tr>
+            <td>salary:</td>
+            <td><input type="text" th:field="*{salary}"/></td>
+        </tr>
+        <tr>
+            <td>Department:</td>
+            <td th:text="${employee.getDepartment().getName()}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update employee"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
